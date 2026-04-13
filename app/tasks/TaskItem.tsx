@@ -1,6 +1,7 @@
 "use client";
 
 import { Task } from "@/generated/prisma";
+import { useTransition } from "react";
 import { deleteTask, toggleTask } from "./actions";
 
 type Props = {
@@ -8,15 +9,32 @@ type Props = {
 };
 
 export default function TaskItem({ task }: Props) {
+  const [isPending, startTransition] = useTransition();
+
+  function handleToggle() {
+    startTransition(() => {
+      toggleTask(task.id, task.completed);
+    });
+  }
+
+  function handleDelete() {
+    startTransition(() => {
+      deleteTask(task.id);
+    });
+  }
+
   return (
-    <li className="flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+    <li
+      className={`flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-sm transition ${
+        isPending ? "opacity-50" : ""
+      }`}
+    >
       {/* 完了チェックボックス */}
       <input
         type="checkbox"
         checked={task.completed}
-        onChange={() => {
-          toggleTask(task.id, task.completed);
-        }}
+        onChange={handleToggle}
+        disabled={isPending}
         className="w-5 h-5 accent-blue-600 cursor-pointer"
       />
 
@@ -36,9 +54,8 @@ export default function TaskItem({ task }: Props) {
 
       {/* 削除ボタン */}
       <button
-        onClick={() => {
-          deleteTask(task.id);
-        }}
+        onClick={handleDelete}
+        disabled={isPending}
         className="text-red-400 hover:text-red-600 transition text-sm font-medium"
       >
         削除
