@@ -1,6 +1,6 @@
 import { getTasks } from "@/lib/tasks";
 import TaskList from "./TaskList";
-import AddTaskForm from "./addTaskForm";
+import AddTaskForm from "./AddTaskForm";
 
 export default async function TaskPage() {
   const tasks = await getTasks();
