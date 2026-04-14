@@ -49,7 +49,7 @@ export default function TaskItem({ task }: Props) {
 
       {/* 作成日時 */}
       <span className="text-xs text-gray-400">
-        {new Date(task.createdAt).toLocaleDateString("ja-JP")}
+        {new Date(task.createdAt).toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" })}
       </span>
 
       {/* 削除ボタン */}
