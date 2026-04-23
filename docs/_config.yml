@@ -1,3 +1,16 @@
 theme: minima
 title: タスク管理アプリ 設計書
 description: 自動生成された設計書
+header_pages:
+  - index.md
+  - overview.md
+  - directory.md
+  - env.md
+  - auth.md
+  - error.md
+  - pages.md
+  - ui.md
+  - dataflow.md
+  - external.md
+  - types.md
+  - database.md
