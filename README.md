@@ -18,3 +18,6 @@
 | [Prisma](https://www.prisma.io/) | ORM（データベース操作） |
 | [Neon](https://neon.tech/) | PostgreSQL（無料DBホスティング） |
 | [Vercel](https://vercel.com/) | デプロイ（無料Webホスティング） |
+
+## デプロイ
+https://task-manager-nine-vert-25.vercel.app/
